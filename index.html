@@ -21,8 +21,8 @@
     html, body { height: 100%; }
 
     html {
-      cursor: url("/cursor.png") 12 1, auto;
-      cursor: image-set(url("/cursor.png") 1x, url("/cursor-2x.png") 2x) 12 1, auto;
+      cursor: url("/cursor.png?v=2") 9 1, auto;
+      cursor: image-set(url("/cursor.png?v=2") 1x, url("/cursor-2x.png?v=2") 2x) 9 1, auto;
     }
 
     body {
@@ -55,8 +55,8 @@
       color: var(--quiet);
       text-decoration: none;
       transition: color 0.2s ease;
-      cursor: url("/cursor.png") 12 1, pointer;
-      cursor: image-set(url("/cursor.png") 1x, url("/cursor-2x.png") 2x) 12 1, pointer;
+      cursor: url("/cursor.png?v=2") 9 1, pointer;
+      cursor: image-set(url("/cursor.png?v=2") 1x, url("/cursor-2x.png?v=2") 2x) 9 1, pointer;
     }
 
     a:hover,
@@ -74,6 +74,19 @@
       gap: 6px 20px;
       margin-top: 4px;
     }
+
+    .glint {
+      position: fixed;
+      pointer-events: none;
+      background: linear-gradient(135deg, #dfe3e8, #8b939e 55%, #5f6772);
+      clip-path: polygon(50% 0, 62% 38%, 100% 50%, 62% 62%, 50% 100%, 38% 62%, 0 50%, 38% 38%);
+      animation: glint 800ms ease-out forwards;
+    }
+
+    @keyframes glint {
+      from { opacity: 0.95; transform: translate(-50%, -50%) scale(1) rotate(0deg); }
+      to { opacity: 0; transform: translate(calc(-50% + var(--dx)), calc(-50% + var(--dy))) scale(0.3) rotate(90deg); }
+    }
   </style>
 </head>
 <body>
@@ -84,5 +97,30 @@
     <a href="https://www.linkedin.com/in/natalie-trono/">linkedin</a>
     <a href="https://x.com/Natalie_Trono">twitter</a>
   </nav>
+
+  <script>
+    (() => {
+      if (!matchMedia("(hover: hover) and (pointer: fine)").matches) return;
+      if (matchMedia("(prefers-reduced-motion: reduce)").matches) return;
+      let lastX = 0, lastY = 0, live = 0;
+      addEventListener("pointermove", (e) => {
+        if (e.pointerType !== "mouse" || live > 40) return;
+        if (Math.hypot(e.clientX - lastX, e.clientY - lastY) < 10) return;
+        lastX = e.clientX;
+        lastY = e.clientY;
+        const g = document.createElement("i");
+        const size = 5 + Math.random() * 4;
+        g.className = "glint";
+        g.style.width = g.style.height = size + "px";
+        g.style.left = e.clientX + 1 + (Math.random() - 0.5) * 12 + "px";
+        g.style.top = e.clientY + 11 + (Math.random() - 0.5) * 12 + "px";
+        g.style.setProperty("--dx", (Math.random() - 0.5) * 12 + "px");
+        g.style.setProperty("--dy", 8 + Math.random() * 10 + "px");
+        live++;
+        g.addEventListener("animationend", () => { g.remove(); live--; });
+        document.body.append(g);
+      });
+    })();
+  </script>
 </body>
 </html>
