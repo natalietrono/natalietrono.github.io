@@ -1,0 +1,31 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="28" height="28" viewBox="0 0 64 64">
+  <defs>
+    <linearGradient id="rim" gradientUnits="userSpaceOnUse" x1="12" y1="4" x2="52" y2="60">
+      <stop offset="0" stop-color="#8f96a1"/>
+      <stop offset="1" stop-color="#2f343c"/>
+    </linearGradient>
+    <linearGradient id="edge" gradientUnits="userSpaceOnUse" x1="12" y1="4" x2="52" y2="60">
+      <stop offset="0" stop-color="#ffffff"/>
+      <stop offset="0.5" stop-color="#bcc2cb"/>
+      <stop offset="1" stop-color="#5f6772"/>
+    </linearGradient>
+    <linearGradient id="body" gradientUnits="userSpaceOnUse" x1="18" y1="8" x2="46" y2="58">
+      <stop offset="0" stop-color="#ffffff"/>
+      <stop offset="0.36" stop-color="#e4e7ec"/>
+      <stop offset="0.54" stop-color="#7a828d"/>
+      <stop offset="0.62" stop-color="#f6f7f9"/>
+      <stop offset="0.85" stop-color="#c3c9d1"/>
+      <stop offset="1" stop-color="#8a929d"/>
+    </linearGradient>
+    <radialGradient id="shine" gradientUnits="userSpaceOnUse" cx="27.4" cy="24.4" r="10">
+      <stop offset="0" stop-color="#ffffff"/>
+      <stop offset="1" stop-color="#ffffff" stop-opacity="0"/>
+    </radialGradient>
+    <path id="outer" d="M25.16 6.32 Q26.83 -0.23 31.01 5.07 L36.59 12.15 Q40.78 17.45 47.52 17.01 L56.51 16.43 Q63.25 15.99 59.50 21.61 L54.50 29.10 Q50.75 34.72 53.25 41.00 L56.58 49.37 Q59.09 55.64 52.58 53.81 L43.91 51.37 Q37.41 49.54 32.21 53.86 L25.28 59.62 Q20.08 63.94 19.82 57.18 L19.46 48.18 Q19.19 41.43 13.48 37.82 L5.86 33.01 Q0.14 29.40 6.48 27.06 L14.94 23.94 Q21.28 21.60 22.94 15.05Z"/>
+    <path id="inner" d="M27.25 12.71 Q28.52 7.73 31.70 11.76 L35.94 17.14 Q39.12 21.17 44.25 20.84 L51.08 20.39 Q56.20 20.06 53.35 24.33 L49.55 30.02 Q46.70 34.30 48.60 39.07 L51.14 45.43 Q53.04 50.20 48.09 48.80 L41.50 46.95 Q36.56 45.56 32.61 48.84 L27.34 53.22 Q23.39 56.50 23.19 51.37 L22.92 44.52 Q22.72 39.39 18.37 36.65 L12.58 32.99 Q8.24 30.25 13.06 28.47 L19.48 26.10 Q24.30 24.32 25.57 19.35Z"/>
+  </defs>
+  <use href="#outer" fill="url(#rim)" stroke="url(#rim)" stroke-width="2.4" stroke-linejoin="round"/>
+  <use href="#outer" fill="url(#edge)"/>
+  <use href="#inner" fill="url(#body)"/>
+  <use href="#inner" fill="url(#shine)"/>
+</svg>
